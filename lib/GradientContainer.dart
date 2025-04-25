@@ -1,7 +1,5 @@
 import 'dart:math';
-
 import 'package:flutter/material.dart';
-import 'package:roll_dice_app/StyledText.dart';
 
 class GradientContainer extends StatefulWidget {
   const GradientContainer({super.key});
@@ -32,19 +30,23 @@ class _GradientContainerState extends State<GradientContainer> {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Image.asset(
-              'lib/assets/dice-images/dice-$currentDiceNumber.png',
-              width: 100,
-              height: 100,
+            AnimatedSwitcher(
+              duration: Duration(milliseconds: 500),
+              child: Image.asset(
+                'lib/assets/dice-images/dice-$currentDiceNumber.png',
+                key: ValueKey(currentDiceNumber),
+                width: 100,
+                height: 100,
+              ),
             ),
             const SizedBox(height: 20),
             ElevatedButton(
               onPressed: rollDice,
               style: ElevatedButton.styleFrom(
-                foregroundColor: Colors.white,
-                backgroundColor: Colors.blueAccent,
+                foregroundColor: Color(0xFF8E7DBE),
+                backgroundColor: Color(0xFFA6D6D6),
               ),
-              child: const Text("Roll Dice"),
+              child: const Text("Roll Dice"), // bug 
             ),
           ],
         ),
